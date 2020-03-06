@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:controls="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
+             xmlns:local="clr-namespace:NoPoverty.Views"
+             mc:Ignorable="d"
+             x:Class="NoPoverty.Views.DonorView.NewMeal">
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="View certificate"
+                 Order="Primary"
+                     x:Name="lbl"
+                 Priority="0"
+                 Clicked="BtnDownload_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="10,20,10,10" >
+                
+                <Entry Placeholder="Title of Meal" HeightRequest="80" x:Name="FoodTitle"></Entry>
+                <Entry Placeholder="Description" HeightRequest="80" x:Name="FoodDesc"></Entry>
+                <Entry Placeholder="Calorie/Meal" HeightRequest="80" x:Name="FoodCalo"></Entry>
+                <Entry Placeholder="Healthiness(How healthy is the food on a scale of 10)" HeightRequest="80" x:Name="FoodHealthiness"></Entry>
+                <Entry Placeholder="Quantity" HeightRequest="80" x:Name="FoodQty"></Entry>
+
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="10,20,10,10" >
+                    <!--add calender here!-->
+                    
+    
+        <controls:Calendar
+        Padding="10,0"
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand"
+        Events="{Binding Events}"
+        Culture="{Binding Culture}"
+        Month="{Binding Month}"
+        Year="{Binding Year}"
+        SelectedDate="{Binding SelectedDate}"
+        DayTappedCommand="{Binding DayTappedCommand}"
+        MinimumDate="{Binding MinimumDate}"
+        MaximumDate="{Binding MaximumDate}">
+
+            <controls:Calendar.EventTemplate>
+                <DataTemplate>
+                    <StackLayout
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Padding="15,0,0,0">
+
+                        <StackLayout Orientation="Horizontal" >
+                            <Label
+                            Text="{Binding DateTime}"
+                            FontAttributes="Italic"
+                            FontSize="Small" />
+                            <StackLayout Margin="15,0,0,0">
+                                <Label
+                            Text="{Binding DonorUserName}"
+                            FontAttributes="Bold"
+                            FontSize="Medium" />
+                                <Label
+                        Text="{Binding Description}"
+                        FontSize="Small"
+                        LineBreakMode="WordWrap" />
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+                </DataTemplate>
+            </controls:Calendar.EventTemplate>
+        </controls:Calendar>
+        <!--Styling    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="daysLabelStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Italic" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+            <Style x:Key="daysTitleLabelStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+
+        <!-- Swipe handling
+    
+        DisableSwipeDetection="False"
+    
+        SwipeLeftCommand="{Binding SwipeLeftCommand}"
+        SwipeRightCommand="{Binding SwipeRightCommand}"
+        SwipeUpCommand="{Binding SwipeUpCommand}"
+    
+        SwipeUpToHideEnabled="False"
+        SwipeToChangeMonthEnabled="False"-->
+
+        <!-- Customizations
+    
+        DaysLabelStyle="{StaticResource daysLabelStyle}"
+        DaysTitleLabelStyle="{StaticResource daysTitleLabelStyle}"
+        MonthLabelColor="Red"
+        YearLabelColor="Blue"
+        SelectedDateColor="Red"
+        SelectedDayBackgroundColor="DarkCyan"
+        EventIndicatorColor="Red"
+        EventIndicatorSelectedColor="White"
+        ArrowsColor="DarkCyan"
+        DaysTitleColor="Orange"
+        SelectedDayTextColor="Cyan"
+        DeselectedDayTextColor="Blue"
+        OtherMonthDayColor="Gray"
+        TodayOutlineColor="Blue"
+        TodayFillColor="Silver"
+        DayViewSize="40"
+        DayViewCornerRadius="3"
+        DaysTitleHeight="40"-->
+
+                    <Label Text="Add the date/time to book a slot (e.g 03/08/2020 08:00:34)" HeightRequest="40" HorizontalOptions="FillAndExpand" FontSize="16"/>
+                    <Entry Placeholder="Please use above format" HeightRequest="45" x:Name="DateTimeInput"></Entry>
+                    <Label Text="Any relevant information (Details)" HeightRequest="40" HorizontalOptions="FillAndExpand" FontSize="16"/>
+                    <Entry Placeholder="e.g: Meet me near the Supermarket" HeightRequest="45" x:Name="Description"></Entry>
+
+                </StackLayout>
+
+                <Button Text="Upload Meal" 
+                                Style="{StaticResource FollowButton}"
+                                Clicked="btnaddMeal"/>
+            </StackLayout>
+
+            
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
