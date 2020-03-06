@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:control="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="NoPoverty.Views.MealDetails">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Margin="10,10,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Image Source="meal2.jpg" Grid.Row="0" Aspect="AspectFit"  />
+                <StackLayout  Orientation="Horizontal" Margin="0,10,0,5" Spacing="10" Grid.Row="1">
+
+                    <control:CircleImage
+                        Grid.Row="0"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        Aspect="AspectFill"
+                        Source="icon.png"
+                        />
+                    <StackLayout Orientation="Vertical" Spacing="0" Margin="0">
+                        <Label x:Name="donator" FontSize="16" HeightRequest="16"/>
+                        <Label x:Name="title" FontSize="30" FontAttributes="Bold"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Grid.Row="2" Margin="0,5,0,10">
+                    <Label Text="Description" FontSize="20" FontAttributes="Bold"/>
+                    <Label x:Name="description" FontSize="16"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Grid.Row="3" Margin="0,5,0,10">
+                    <Label Text="Quantity Available" FontSize="20" FontAttributes="Bold"/>
+                    <Label x:Name="qty" FontSize="16"/>
+                </StackLayout>
+                <StackLayout Grid.Row="4" Orientation="Vertical" Margin="0,5,0,10">
+                    <Label Text="How healthy item is" FontSize="20" FontAttributes="Bold"/>
+                    <Label x:Name="healthiness" FontSize="16"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Grid.Row="5" Margin="0,5,0,10">
+                    <Label Text="Calorie per Meal" FontSize="20" FontAttributes="Bold"/>
+                    <Label x:Name="calorie" FontSize="16"/>
+                </StackLayout>
+                <StackLayout Grid.Row="6" Orientation="Vertical">
+                    <Label Text="Location of Donor"/>
+                    <Image Source="location.jpg"  Aspect="AspectFill"/>
+                </StackLayout>
+                <Button Text="Contact Donor" Grid.Row="7" Style="{StaticResource FollowButton}" Clicked="BtnReq_Click"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

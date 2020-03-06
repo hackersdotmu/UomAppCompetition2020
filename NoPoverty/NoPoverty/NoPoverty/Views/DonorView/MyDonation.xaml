@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:control="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             Title="My Donations"
+             x:Class="NoPoverty.Views.DonorView.MyDonation">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White" Margin="10,5,10,10">
+            <ListView x:Name="ListOfdons"
+                      HasUnevenRows="true"
+                      ItemSelected="MyMeals">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="0,10,0,5" BackgroundColor="#fbf8f6"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="150" />
+                                </Grid.RowDefinitions>
+                                <Image Source="meal.jpg" Grid.Row="1" Aspect="AspectFill"  />
+                                <StackLayout Orientation="Horizontal" Margin="10,0,10,0" Spacing="5" Grid.Row="1">
+                                    <Label Text="{Binding Title}" 
+                                           VerticalOptions="Center" 
+                                           HorizontalOptions="CenterAndExpand"
+                                           TextColor="Black" 
+                                           FontSize="30"
+                                           BackgroundColor="White"
+                                           />
+                                </StackLayout>
+                                
+                                
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
